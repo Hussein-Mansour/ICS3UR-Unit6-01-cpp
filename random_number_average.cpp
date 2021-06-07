@@ -16,29 +16,25 @@ int main() {
     int number;
     float average;
     float sum = 0;
-
+    // starting
     std::cout << "Starting ...\n" << std::endl;
-
+    // random
+    std::random_device rseed;
+    std::mt19937 rgen(rseed());  // mersenne_twister
+    std::uniform_int_distribution<int> idist(0 , 100);
     // input
     for (int loop_counter = 0; loop_counter < 10; loop_counter++) {
-        std::random_device rseed;
-        std::mt19937 rgen(rseed());  // mersenne_twister
-        std::uniform_int_distribution<int> idist(0 , 100);  // [0,9]
         number = idist(rgen);
-
         randomNumber[loop_counter] = number;
         // output
         std::cout << "The random number is: "
         << randomNumber[loop_counter] << std::endl;
     }
-
     // process & output
-    for (int i = 0; i < 10; i++) {
-        sum+= randomNumber[i];
+    for (int counterLoop = 0; counterLoop < 10; counterLoop++) {
+        sum+= randomNumber[counterLoop];
         average = sum / 10;
     }
     std::cout << "\nThe average is " << average << std::endl;
-
-
 std::cout << "\n\nDone." << std::endl;
 }
